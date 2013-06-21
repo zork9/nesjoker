@@ -14,39 +14,127 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <list>
+#include <cmath>
 
-template<class T>
-class Lambda
+//////////////////////////////////////////////////
+// Fuzzy set programs
+//////////////////////////////////////////////////
+
+template<typename C, typename S>
+class FuzzyFunctorLittleF : public FuzzyFunctor<C, S> 
 {
-	Lambda();
+public:
+	FuzzyFunctorLittleF() {};
 
-	void operator() (T const& x)
-	{
-		v.push_back(x.get_returncode());
-	}	
+	int func(void *x,void *y) {
+		return (1.3 / std::sqrt((float)*x));	
+	}
 
-	std::list<int> v;
 };
 
-template<class CPU, class LAMBDA, class R>
-std::list<R> executelambda(CPU/*<LAMBDA const&>*/ const& cpu) {
-	LAMBDA& lamb = cpu.get_lambda();	
-	lamb(const_cast<CPU&>(cpu));
-	R& returncode = const_cast<CPU&>(cpu).get_returncode();
-	std::list<R> v;
-	v.push_back(returncode);
-	return v;
-}
-
-template<class CPU, class LAMBDA>
-int execute(std::list<CPU const& > const& cpul, LAMBDA const& lambda) {
-	for_each (const_cast<std::list<CPU const&> >(cpul).begin(), const_cast<CPU&>(cpul).end(), const_cast<LAMBDA&>(lambda)());
+mem_fun_t make_littlef<FuzzyFunctorLittleF>(mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
 };
 
-template<class CPU>
-int add(std::list<CPU const&> const& cpul, CPU cpu) {
-	const_cast<std::list<CPU const&> >(cpul).push_front(cpu);
-	return const_cast<CPU&>(cpu).returncode();
+template<typename C, typename S>
+class FuzzyFunctorSlightlyF : public FuzzyFunctor<C, S> 
+{
+public:
+	FuzzyFunctorSlightlyF() {};
+
+	int func(void *x,void *y) {
+		return (1.7 / std::sqrt((float)*x));	
+	}
+
 };
 
- 
+mem_fun_t make_littlef<FuzzyFunctorSlightlyF>(mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
+};
+
+template<typename C, typename S>
+class FuzzyFunctorVeryF : public FuzzyFunctor<C, S> 
+{
+public:
+	FuzzyFunctorVeryF() {};
+
+	int func(void *x,void *y) {
+		return ((float)*x * (float)*x);	
+	}
+
+};
+
+mem_fun_t make_veryf<FuzzyFunctorVeryF>(mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
+};
+
+
+template<typename C, typename S>
+class FuzzyFunctorExtremelyF : public FuzzyFunctor<C, S> 
+{
+public:
+	FuzzyFunctorExtremelyF() {};
+
+	int func(void *x,void *y) {
+		return ((float)*x * (float)*x * (float)*x);	
+	}
+
+};
+
+mem_fun_t make_veryf<FuzzyFunctorExtremelyF>(mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
+};
+
+
+template<typename C, typename S>
+class FuzzyFunctorVeryVeryF : public FuzzyFunctor<C, S> 
+{
+public:
+	FuzzyFunctorVeryVeryF() {};
+
+	int func(void *x,void *y) {
+		return ((float)*x * (float)*x * (float)*x * (float)*x);	
+	}
+
+};
+
+mem_fun_t make_veryf<FuzzyFunctorVeryVeryF>(mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
+};
+
+
+template<typename C, typename S>
+class FuzzyFunctorMoreOrLessF : public FuzzyFunctor<C, S> 
+{
+public:
+	FuzzyFunctorMoreOrLessF() {};
+
+	int func(void *x,void *y) {
+		return (std::sqrt((float)*x);	
+	}
+
+};
+
+mem_fun_t make_veryf<FuzzyFunctorMoreOrLessF>(mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
+};
+
+
+template<typename C, typename S>
+class FuzzyFunctorSomewhatF : public FuzzyFunctor<C, S> 
+{
+public:
+	FuzzyFunctorSomewhatF() {};
+
+	int func(void *x,void *y) {
+		return (std::sqrt((float)*x);	
+	}
+
+};
+
+mem_fun_t make_veryf<FuzzyFunctorSomewhatF>(mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
+};
+
+
+
