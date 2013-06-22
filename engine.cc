@@ -15,126 +15,17 @@
 */
 #include <list>
 #include <cmath>
+#include "engine.h"
 
 //////////////////////////////////////////////////
 // Fuzzy set programs
 //////////////////////////////////////////////////
 
-template<typename C, typename S>
-class FuzzyFunctorLittleF : public FuzzyFunctor<C, S> 
+namespace nesjoker
 {
-public:
-	FuzzyFunctorLittleF() {};
-
-	int func(void *x,void *y) {
-		return (1.3 / std::sqrt((float)*x));	
-	}
-
-};
-
-mem_fun_t make_littlef<FuzzyFunctorLittleF>(mem_fun_t f, void *b, void *c) {
-	mem_fun(&F::func)();
-};
-
-template<typename C, typename S>
-class FuzzyFunctorSlightlyF : public FuzzyFunctor<C, S> 
+namespace fuzzy
 {
-public:
-	FuzzyFunctorSlightlyF() {};
 
-	int func(void *x,void *y) {
-		return (1.7 / std::sqrt((float)*x));	
-	}
-
-};
-
-mem_fun_t make_littlef<FuzzyFunctorSlightlyF>(mem_fun_t f, void *b, void *c) {
-	mem_fun(&F::func)();
-};
-
-template<typename C, typename S>
-class FuzzyFunctorVeryF : public FuzzyFunctor<C, S> 
-{
-public:
-	FuzzyFunctorVeryF() {};
-
-	int func(void *x,void *y) {
-		return ((float)*x * (float)*x);	
-	}
-
-};
-
-mem_fun_t make_veryf<FuzzyFunctorVeryF>(mem_fun_t f, void *b, void *c) {
-	mem_fun(&F::func)();
-};
-
-
-template<typename C, typename S>
-class FuzzyFunctorExtremelyF : public FuzzyFunctor<C, S> 
-{
-public:
-	FuzzyFunctorExtremelyF() {};
-
-	int func(void *x,void *y) {
-		return ((float)*x * (float)*x * (float)*x);	
-	}
-
-};
-
-mem_fun_t make_veryf<FuzzyFunctorExtremelyF>(mem_fun_t f, void *b, void *c) {
-	mem_fun(&F::func)();
-};
-
-
-template<typename C, typename S>
-class FuzzyFunctorVeryVeryF : public FuzzyFunctor<C, S> 
-{
-public:
-	FuzzyFunctorVeryVeryF() {};
-
-	int func(void *x,void *y) {
-		return ((float)*x * (float)*x * (float)*x * (float)*x);	
-	}
-
-};
-
-mem_fun_t make_veryf<FuzzyFunctorVeryVeryF>(mem_fun_t f, void *b, void *c) {
-	mem_fun(&F::func)();
-};
-
-
-template<typename C, typename S>
-class FuzzyFunctorMoreOrLessF : public FuzzyFunctor<C, S> 
-{
-public:
-	FuzzyFunctorMoreOrLessF() {};
-
-	int func(void *x,void *y) {
-		return (std::sqrt((float)*x);	
-	}
-
-};
-
-mem_fun_t make_veryf<FuzzyFunctorMoreOrLessF>(mem_fun_t f, void *b, void *c) {
-	mem_fun(&F::func)();
-};
-
-
-template<typename C, typename S>
-class FuzzyFunctorSomewhatF : public FuzzyFunctor<C, S> 
-{
-public:
-	FuzzyFunctorSomewhatF() {};
-
-	int func(void *x,void *y) {
-		return (std::sqrt((float)*x);	
-	}
-
-};
-
-mem_fun_t make_veryf<FuzzyFunctorSomewhatF>(mem_fun_t f, void *b, void *c) {
-	mem_fun(&F::func)();
-};
-
-
+}
+}
 

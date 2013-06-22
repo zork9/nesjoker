@@ -1,7 +1,8 @@
 CC = gcc -g -O3
 CXX = g++ -g -O3
 LIBS =
-OBJS = engine.o \
+OBJS = enginebase.o \
+	engine.o \
 	main.o 
 
 all: nesjoker
