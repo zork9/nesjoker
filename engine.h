@@ -40,6 +40,10 @@ public:
 
 #define make_littlef make_functor<FuzzyFunctorLittleF<void,void> >
 
+/*template<typename F> typedef typename std::mem_fun_t<void,F> make_littlef<FuzzyFunctorLittleF>(std::mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
+};
+*/
 template<typename C, typename S>
 class FuzzyFunctorSlightlyF : public FuzzyFunctor<C, S> 
 {
@@ -53,7 +57,10 @@ public:
 };
 
 #define make_slightlyf make_functor<FuzzyFunctorSlightlyF<void,void> >
-
+/*std::mem_fun_t make_slightlyf<FuzzyFunctorSlightlyF>(std::mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
+};
+*/
 template<typename C, typename S>
 class FuzzyFunctorVeryF : public FuzzyFunctor<C, S> 
 {
@@ -67,7 +74,10 @@ public:
 };
 
 #define make_veryf make_functor<FuzzyFunctorVeryF<void,void> > 
-
+/*std::mem_fun_t make_veryf<FuzzyFunctorVeryF>(std::mem_fun_t f, void *b, void *c) {
+	mem_fun(&F::func)();
+};
+*/
 
 template<typename C, typename S>
 class FuzzyFunctorExtremelyF : public FuzzyFunctor<C, S> 
@@ -83,7 +93,7 @@ public:
 
 #define make_extremelyf make_functor<FuzzyFunctorExtremelyF<void,void> > 
 /*
-std::mem_fun_t make_veryf<FuzzyFunctorExtremelyF>(std::mem_fun_t f, void *b, void *c) {
+std::mem_fun_t make_extrmelyf<FuzzyFunctorExtremelyF>(std::mem_fun_t f, void *b, void *c) {
 	mem_fun(&F::func)();
 };
 */
