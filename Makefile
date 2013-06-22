@@ -1,5 +1,5 @@
 CC = gcc -g -O3
-CXX = g++ -g -O3
+CXX = g++ -g -Werror -O3
 LIBS =
 OBJS = enginebase.o \
 	engine.o \
