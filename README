@@ -1,3 +1,8 @@
-This code is licensed under the MIT and GPL version 2 license.
+This code is licensed under the GPL version 2 license.
+
+. 'nesjoker.ambienttalk' is the NES emulator written in the 
+ambienttalk language
+
+. 'nesjoker.c++' is the emulator in C++
 
 Ambienttalk can be found at http://soft.vub.ac.be/amop/
